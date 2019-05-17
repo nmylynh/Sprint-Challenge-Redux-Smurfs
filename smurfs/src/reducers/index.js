@@ -5,7 +5,10 @@
 import {
   FETCH_SMURFS_START,
   FETCH_SMURFS_SUCCESS,
-  FETCH_SMURFS_FAIL
+  FETCH_SMURFS_FAIL,
+  ADD_SMURF_START,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_FAIL
 } from '../actions';
 
 /*
@@ -20,11 +23,11 @@ import {
  }
 */
 
-const nextId = 2
 const initialState = {
   smurfs: [],
   error: '',
-  isFetching: false
+  isFetching: false,
+  addingSmurf: false
 };
 
 export default(state = initialState, action) => {
@@ -47,6 +50,23 @@ export default(state = initialState, action) => {
         ...state,
         error: action.payload
       };
+    case ADD_SMURF_START:
+      return {
+        ...state,
+        addingSmurf: true
+      }
+    case ADD_SMURF_SUCCESS:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload
+      }
+    case ADD_SMURF_FAIL:
+      return {
+        ...state,
+        addingSmurf: false,
+        error: action.payload
+      }
     default:
       return state;
   }
