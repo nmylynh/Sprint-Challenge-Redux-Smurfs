@@ -3,9 +3,9 @@
 */
 
 import {
-  FETCH_SMURF_START,
-  FETCH_SMURF_SUCCESS,
-  FETCH_SMURF_FAIL
+  FETCH_SMURFS_START,
+  FETCH_SMURFS_SUCCESS,
+  FETCH_SMURFS_FAIL
 } from '../actions';
 
 /*
@@ -20,28 +20,31 @@ import {
  }
 */
 
+const nextId = 2
 const initialState = {
-  smurfs: [],
+  smurfs: [
+    {id: 1, name: 'JimBob', age: 24, height: '4in'}
+  ],
   error: '',
   isFetching: false
 };
 
 export default(state = initialState, action) => {
   switch(action.type) {
-    case FETCH_SMURF_START:
+    case FETCH_SMURFS_START:
       return {
         ...state, 
         fetchingSmurfs: true,
         error: ''
       }
-    case FETCH_SMURF_SUCCESS:
+    case FETCH_SMURFS_SUCCESS:
       return {
         ...state,
         smurfs: action.payload,
         fetchingSmurfs: false,
         error: ''
       }
-    case FETCH_SMURF_FAIL:
+    case FETCH_SMURFS_FAIL:
       return {
         ...state,
         error: action.payload
