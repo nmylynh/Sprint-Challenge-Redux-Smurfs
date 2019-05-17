@@ -16,6 +16,11 @@ export class AddSmurf extends Component {
     submitSmurf = e => {
         e.preventDefault();
         this.props.addSmurf(this.state);
+        this.setState({
+            name: '',
+            age: '',
+            height:''
+        })
     }
     
 
