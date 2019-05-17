@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getSmurfs } from '../actions';
+import { getSmurfs, addSmurf } from '../actions';
 import { connect } from 'react-redux';
 import Smurfs from './Smurfs';
+import AddSmurf from './AddSmurf'
 
 /*
  to wire this component up you're going to need a few things.
@@ -21,12 +22,14 @@ class App extends Component {
     return (
       <div className="App">
       <Smurfs smurfs={this.props.smurfs} />
+      <AddSmurf addSmurf={this.props.addSmurf} />
 
       </div>
     );
   }
 }
 const mapStateToProps = (state) => ({
-  smurfs: state.smurfs
+  smurfs: state.smurfs,
+  addingSmurf: state.addingSmurf
 });
-export default connect(mapStateToProps, {getSmurfs})(App);
+export default connect(mapStateToProps, {getSmurfs, addSmurf})(App);
