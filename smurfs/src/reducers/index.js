@@ -22,9 +22,7 @@ import {
 
 const nextId = 2
 const initialState = {
-  smurfs: [
-    {id: 1, name: 'JimBob', age: 24, height: '4in'}
-  ],
+  smurfs: [],
   error: '',
   isFetching: false
 };
